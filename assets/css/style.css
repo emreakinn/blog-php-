@@ -1,0 +1,88 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css");
+
+* {
+    text-decoration: none !important;
+}
+
+#adminNav {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+#adminNav a {
+    color: #fff;
+}
+
+.footerMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bi {
+    font-size: 24px;
+    color: #393939;
+}
+
+/* 
+.social {
+    display: flex;
+    column-gap: 15px;
+} */
+
+#footer,
+#footer a,
+#footer .bi {
+    color: #fff;
+}
+
+/* .banner {
+    padding: 150px 0;
+    background-color: #e2e3e5;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+} */
+
+#mainBanner img {
+    width: 60%;
+    border-radius: 32px;
+}
+
+/* .btn-purple,
+.bg-purple {
+    background-color: #6c55f9;
+    color: #fff;
+}
+
+.text-purple {
+    color: #6c55f9;
+}
+
+.btn-purple:hover {
+    background-color: #6048ff;
+    color: #fff;
+} */
+
+/* .flexList {
+    display: flex;
+    flex-direction: column;
+}
+
+#pricing,
+.list-group-item {
+    border: none;
+} */
+
+.py-80 {
+    padding: 80px 0;
+}
+
+/* .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+} */

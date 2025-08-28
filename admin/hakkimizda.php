@@ -1,11 +1,11 @@
 <?php require_once('header.php');
 
-if (isset($_GET['bannerUpdateID'])) {
-    $id = $_GET['bannerUpdateID'];
+if (isset($_GET['hakkimizdaUpdateID'])) {
+    $id = $_GET['hakkimizdaUpdateID'];
 
-    $bannerGun = $db->prepare('SELECT * FROM banner WHERE id=?');
-    $bannerGun->execute(array($id));
-    $bannerGunFetch = $bannerGun->fetch();
+    $hakkimizdaGun = $db->prepare('SELECT * FROM hakkimizda WHERE id=?');
+    $hakkimizdaGun->execute(array($id));
+    $hakkimizdaGunFetch = $hakkimizdaGun->fetch();
     echo '<script>
             document.addEventListener("DOMContentLoaded", function () {
             var myModal = new bootstrap.Modal(document.getElementById("exampleModalBanner"));
@@ -18,7 +18,7 @@ if (isset($_GET['bannerUpdateID'])) {
 <!-- Banner Section Start -->
 <div class="row">
     <div class="col-md-6">
-        <h3>Banner Ayarları</h3>
+        <h3>Hakkımızda Ayarları</h3>
     </div>
     <div class="col-md-6">
         <div class="text-end">
@@ -70,28 +70,24 @@ if (isset($_GET['bannerUpdateID'])) {
         <div class="card shadow p-3">
             <div class="card-body">
                 <div class="row">
-                    <?php
-                    $banner = $db->prepare('SELECT * FROM banner ORDER BY id DESC');
-                    $banner->execute();
-                    if ($banner->rowCount()) {
-                        foreach ($banner as $bannerRow) {
-                    ?>
-                            <div class="col-md-6 my-auto">
-                                <h1><?php echo $bannerRow['baslik'] ?></h1>
-                                <p><?php echo $bannerRow['aciklama'] ?></p>
-                            </div>
-                            <div class="col-md-6 my-auto text-end">
-                                <img style="width: 60%; border-radius:32px;" src="<?php echo $bannerRow['gorsel'] ?>" alt="<?php echo $bannerRow['baslik'] ?>" class="w-50">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center py-3">
-                                    <a href="banner.php?bannerUpdateID=<?php echo $bannerRow['id']; ?>"><button class="btn btn-warning w-25">Düzenle</button></a>
-                                </div>
-                            </div>
-                    <?php
-                        }
-                    }
-                    ?>
+                    <div class="col-md-6">
+                        <?php
+                        $hakkimizda = $db->prepare('SELECT * FROM hakkimizda');
+                        $hakkimizda->execute();
+                        $hakkimizdaRow = $hakkimizda->fetch();
+                        ?>
+                        <h3><?php echo $hakkimizdaRow['anabaslik'] ?></h3>
+                        <span class="fs-3">En İyi 360 Derece Dijital Ajans</span>
+                        <div class="my-3"><?php echo substr($hakkimizdaRow['aciklama'], 0, 600); ?></div>
+                    </div>
+                    <div class="col-md-6 my-auto text-end">
+                        <img style="width: 60%; border-radius:32px;" src="<?php echo $hakkimizdaRow['gorsel']; ?>" alt="<?php echo $hakkimizdaRow['anabaslik'] ?>" class="w-50">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center py-3">
+                            <a href="hakkimizda.php?hakkimizdaUpdateID=<?php echo $hakkimizdaRow['id']; ?>"><button class="btn btn-warning w-25">Düzenle</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,20 +13,19 @@ if (isset($_GET['hizmetUpdateID'])) {
             });
         </script>';
 }
-
 ?>
-<!-- Hizmet Section End -->
-<div class="row py-3">
+<!-- Banner Section Start -->
+<div class="row">
     <div class="col-md-6">
         <h3>Hizmet Ayarları</h3>
     </div>
     <div class="col-md-6">
         <div class="text-end">
-            <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#staticBackdropHizmet">
+            <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#staticBackdropBanner">
                 Ekle
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdropHizmet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdropBanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -41,42 +40,19 @@ if (isset($_GET['hizmetUpdateID'])) {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="card shadow">
-                                            <label class="text-center">Hizmet Görseli Ekleyin
-                                                <input type="file" name="gorsel" class="form-control" required>
-                                            </label>
-                                            <div class="card-body">
-                                                <input type="text" name="baslikBir" placeholder="Hizmet Başlığı Girin" class="form-control">
-                                                <textarea name="aciklama1" id="aciklama1" placeholder="Hizmet Açıklama" rows="5" class="form-control my-2"></textarea>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="baslik" placeholder="Banner Başlığı Girin" class="form-control">
+                                        <textarea name="aciklama" id="aciklama" placeholder="Banner Açıklama" rows="5" class="form-control my-2"></textarea>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="card shadow">
-                                            <label class="text-center">Hizmet Görseli Ekleyin
-                                                <input type="file" name="gorsel2" class="form-control" required>
-                                            </label>
-                                            <div class="card-body">
-                                                <input type="text" name="baslik2" placeholder="Hizmet Başlığı Girin" class="form-control">
-                                                <textarea name="aciklama2" id="aciklama2" placeholder="Hizmet Açıklama" rows="5" class="form-control my-2"></textarea>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6 text-end">
+                                        <label class="text-center">Hizmet Görseli Ekleyin
+                                            <input type="file" name="gorsel" class="form-control" required>
+                                        </label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="card shadow">
-                                            <label class="text-center">Hizmet Görseli Ekleyin
-                                                <input type="file" name="gorsel3" class="form-control" required>
-                                            </label>
-                                            <div class="card-body">
-                                                <input type="text" name="baslik3" placeholder="Hizmet Başlığı Girin" class="form-control">
-                                                <textarea name="aciklama3" id="aciklama3" placeholder="Hizmet Açıklama" rows="5" class="form-control my-2"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-center mt-3">
-                                        <input type="submit" name="hizmetKaydet" value="Kaydet" class="btn btn-success w-25">
-                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <input type="submit" name="bannerKaydet" value="Kaydet" class="btn btn-success w-25">
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -86,43 +62,43 @@ if (isset($_GET['hizmetUpdateID'])) {
         </div>
     </div>
 </div>
-<!-- Hizmet Section End -->
+<!-- Banner Section End -->
 
-<div class="card shadow py-3">
-    <div class="card-body">
-        <div class="row">
-            <?php
-            $hizmet = $db->prepare('SELECT * FROM hizmetler ORDER BY baslik ASC');
-            $hizmet->execute();
-            if ($hizmet->rowCount()) {
-                foreach ($hizmet as $hizmetRow) {
-            ?>
-                    <div class="col-md-4">
-                        <div class="card shadow">
-                            <img src="<?php echo $hizmetRow['gorsel']; ?>" alt="<?php echo $hizmetRow['baslik']; ?>">
-                            <div class="card-body">
-                                <h2><?php echo $hizmetRow['baslik']; ?></h2>
-                                <div class="my-3"><?php echo substr($hizmetRow['aciklama'], 0, 150) ?></div>
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow p-3">
+            <div class="card-body">
+                <div class="row">
+                    <?php
+                    $hizmet = $db->prepare('SELECT * FROM hizmetler ORDER BY baslik ASC');
+                    $hizmet->execute();
+                    if ($hizmet->rowCount()) {
+                        foreach ($hizmet as $hizmetRow) {
+                    ?>
+                            <div class="col-md-4">
+                                <div class="card shadow">
+                                    <img src="<?php echo $hizmetRow['gorsel']; ?>" alt="<?php echo $hizmetRow['baslik']; ?>">
+                                    <div class="card-body">
+                                        <h2><?php echo $hizmetRow['baslik']; ?></h2>
+                                        <div class="my-3"><?php echo substr($hizmetRow['aciklama'], 0, 150) ?></div>
+                                    </div>
+                                    <div class="col-md-12 text-center py-3">
+                                        <a href="hizmetler.php?hizmetUpdateID=<?php echo $hizmetRow['id']; ?>"><button class="btn btn-warning w-25">Düzenle</button></a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-12 text-center py-3">
-                                <a href="hizmetler.php?hizmetUpdateID=<?php echo $hizmetRow['id']; ?>"><button class="btn btn-warning w-25">Düzenle</button></a>
-                            </div>
-                        </div>
-                    </div>
-            <?php
-                }
-            }
-            ?>
-        </div>
-        <div class="row">
-
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModalHizmet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Hizmet Ayarlarını Güncelle</h5>
@@ -143,7 +119,7 @@ if (isset($_GET['hizmetUpdateID'])) {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-12">
                             <div class="card shadow">
                                 <img src="<?php echo $hizmetGunFetch['gorsel']; ?>" class="w-100" alt="<?php echo $hizmetGunFetch['baslik']; ?>">
                                 <input type="file" name="gorselGun" class="form-control">

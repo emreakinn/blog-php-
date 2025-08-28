@@ -62,10 +62,17 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        hakkımda bilgi
+                        <?php
+                        $hakkimizda = $db->prepare('SELECT * FROM hakkimizda');
+                        $hakkimizda->execute();
+                        $hakkimizdaRow = $hakkimizda->fetch();
+                        ?>
+                        <h3><?php echo $hakkimizdaRow['anabaslik'] ?></h3>
+                        <span class="fs-3">En İyi 360 Derece Dijital Ajans</span>
+                        <div class="my-3"><?php echo substr($hakkimizdaRow['aciklama'], 0, 600); ?></div>
                     </div>
-                    <div class="col-md-6">
-                        avatar görsel
+                    <div class="col-md-6 my-auto text-end">
+                        <img src="<?php echo $hakkimizdaRow['gorsel']; ?>" alt="<?php echo $hakkimizdaRow['anabaslik'] ?>" class="w-50">
                     </div>
                 </div>
             </div>

@@ -47,6 +47,7 @@ if (!isset($_SESSION['kadi'])) {
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item text-dark" href="banner.php">Banner</a></li>
                             <li><a class="dropdown-item text-dark" href="hizmetler.php">Hizmetler</a></li>
+                            <li><a class="dropdown-item text-dark" href="hakkimizda.php">Hakkımızda</a></li>
                         </ul>
                     </div>
                     <a href="portfolyo.php">Portfolyo</a>

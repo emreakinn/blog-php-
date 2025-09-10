@@ -114,7 +114,6 @@ if (isset($_GET['bannerUpdateID'])) {
             </div>
             <div class="modal-body">
                 <form action="" method="post" enctype="multipart/form-data">
-                    <div class="fs-3">Banner Ayarlarını Güncelle</div>
                     <div class="row">
                         <div class="col-md-6 my-auto text-start">
                             <input type="text" name="baslikGun" value="<?php echo $bannerGunFetch['baslik']; ?>" class="form-control">

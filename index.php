@@ -68,7 +68,7 @@
                         $hakkimizdaRow = $hakkimizda->fetch();
                         ?>
                         <h3><?php echo $hakkimizdaRow['anabaslik'] ?></h3>
-                        <span class="fs-3">En İyi 360 Derece Dijital Ajans</span>
+                        <span class="fs-3"><?php echo $hakkimizdaRow['baslik']; ?></span>
                         <div class="my-3"><?php echo substr($hakkimizdaRow['aciklama'], 0, 600); ?></div>
                     </div>
                     <div class="col-md-6 my-auto text-end">

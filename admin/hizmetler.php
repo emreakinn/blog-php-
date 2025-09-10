@@ -114,11 +114,6 @@ if (isset($_GET['hizmetUpdateID'])) {
             <div class="modal-body">
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-12 text-center py-3">
-                            <div class="fs-3">Hizmet Ayarları</div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
                             <div class="card shadow">
                                 <img src="<?php echo $hizmetGunFetch['gorsel']; ?>" class="w-100" alt="<?php echo $hizmetGunFetch['baslik']; ?>">
